@@ -1,0 +1,22 @@
+<?php
+$this->title = 'Detalhes - ' . $this->policial->getPatente() . " " . $this->policial->getNomeGuerra();
+      $this->headTitle($this->title);
+?>
+<br />
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>Matrícula</th>
+        <th>Nome de Guerra</th>
+        <th>Nome Completo</th>
+        <th>&nbsp;</th>
+    </tr>
+        <tr>
+            <td><?php echo $this->policial->getMatricula(); ?></td>
+            <td><?php echo $this->policial->getPatente() . ' ' . $this->policial->getNomeGuerra(); ?></td>
+            <td><?php echo $this->policial->getNome(); ?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'edit', 'id_policial' => $this->policial->getId())); ?>">Atualizar</a>
+                <a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'delete')); ?>">Excluir</a>
+            </td>
+        </tr>
+</table>

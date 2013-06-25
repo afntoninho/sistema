@@ -1,0 +1,33 @@
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <?php 
+    $this->headTitle()->setSeparator(' - ');
+    echo $this->headTitle('Zend Framework Tutorial') . "\n";
+    echo $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8') . "\n";
+    ?>
+    <script type="text/javascript" src="/sisoc/public/styles/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/sisoc/public/styles/bootstrap/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/sisoc/public/styles/bootstrap/js/jquery-ui-1.10.3.custom.min.js"></script>
+    
+    <link href="/sisoc/public/styles/bootstrap/css/jquery-ui-1.10.3.custom.min.css" media="screen" rel="stylesheet" type="text/css" >
+    <script type="text/javascript" src="/sisoc/public/styles/bootstrap/js/js.js"></script>
+    
+    <link href="/sisoc/public/styles/bootstrap/css/bootstrap.min.css" media="screen" rel="stylesheet" type="text/css" >
+</head>
+<body>
+    <div class="container" style="border: 1px solid green">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+                <li><a href="index">Home</a></li>
+                <li><a href="ocorrencia">Ocorrência</a></li>
+                <li><a href="policial">Policial</a></li>
+            </ul>
+        </div>
+    </div>
+    <h1><?php echo $this->escape($this->title); ?></h1>
+    <?php echo $this->layout()->content; ?>
+</div>
+</body>
+</html>

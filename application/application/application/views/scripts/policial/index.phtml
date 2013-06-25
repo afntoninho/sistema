@@ -1,0 +1,26 @@
+<?php $this->headTitle("Lista de Policiais - 6º BPM"); ?>
+<h1 class="text-center">Listagem de todos os Policiais - 6º BPM</h1>
+<br />
+<p><a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'add')); ?>">Cadastrar Policial</a></p>
+
+<table class="table table-condensed table-bordered">
+    <tr>
+        <th>Matrícula</th>
+        <th>Nome de Guerra</th>
+        <th>Nome Completo</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->policiais as $policial) : ?>
+        <tr>
+            <td><?php echo $policial->getMatricula(); ?></td>
+            <td><?php echo $policial->getPatente() . " " . $policial->getNomeGuerra(); ?></td>
+            <td><?php echo $policial->getNome(); ?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'detail', 'id_policial' => $policial->getId())); ?>">Detalhar</a>
+                <a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'edit', 'id_policial' => $policial->getId())); ?>">Atualizar</a>
+                <a href="<?php echo $this->url(array('controller' => 'policial', 'action' => 'delete')); ?>">Excluir</a>
+            </td>
+        </tr>
+            
+    <?php endforeach; ; ?>
+</table>

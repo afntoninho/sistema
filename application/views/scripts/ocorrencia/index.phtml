@@ -1,0 +1,91 @@
+<h2 class="text-center">Ocorrências</h2>
+<br /><br /><br />
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>CIADE</th>
+                <th>Hora de<br />Irradiação</th>
+                <th>Código</th>
+                <th>Natureza</th>
+                <th>Setor</th>
+                <th>Comandante<br />Guarnição</th>
+                <th>Matricula</th>
+                <th>RP</th>
+            </tr>
+        </thead>
+        <?php foreach ($this->ocorrencias as $ocorrencia) : ?>
+        <tbody>
+            <tr>
+                <td><i class="icon-arrow-up"></i><?php echo $ocorrencia->getData()->get('dd-MM-yyyy'); ?></td>
+                <td><?php echo $ocorrencia->getCiade(); ?></td>
+                <td><?php echo $ocorrencia->getIrradiacao()->get('HH:mm'); ?></td>
+                <td>12.34</td>
+                <td>Serviço Operacionais Diversos</td>
+                <td>Setor Comercial Norte</td>
+                <td>SGT A. Fulano</td>
+                <td>123.456/x</td>
+                <td><?php echo $ocorrencia->getOrigemPoliciamento(); ?></td>
+            </tr>
+            <tr>
+                <th>Horários:</th>
+                <td colspan="8">
+                    <b>Hora de Irradiação:</b> <?php echo $ocorrencia->getIrradiacao()->get('HH:mm'); ?>
+                    <b>Chegada ao Local:</b> <?php echo $ocorrencia->getChegadaLocal()->get('HH:mm'); ?>
+                    <b>Término no Local:</b> <?php echo $ocorrencia->getTerminoLocal()->get('HH:mm'); ?>
+                    <b>Chegada a DP:</b> <?php echo $ocorrencia->getChegadaDp()->get('HH:mm'); ?>
+                    <b>Término na DP:</b> <?php echo $ocorrencia->getTerminoDp()->get('HH:mm'); ?>
+                    <br />
+                    <b>Tempo de Resposta:</b> <?php echo $ocorrencia->getTempoResposta()->get('HH:mm'); ?>
+                    <b>Tempo no Local:</b> <?php echo $ocorrencia->getTempoLocal()->get('HH:mm'); ?>
+                    <b>Deslocamento DP:</b> <?php echo $ocorrencia->getDeslocamentoDp()->get('HH:mm'); ?>
+                    <b>Tempo na DP:</b> <?php echo $ocorrencia->getTempoDp()->get('HH:mm'); ?>
+                    <b>Tempo Total:</b> <?php echo $ocorrencia->getTempoTotal()->get('HH:mm'); ?>
+                </td>
+            </tr>
+            <tr>
+                <th>Desfecho:</th>
+                <td colspan="8">
+                    <b>DP:</b> <?php echo $ocorrencia->getDesfecho(); ?>
+                    <b>BO:</b> <?php echo $ocorrencia->getBo(); ?>
+                    <b>APF:</b> <?php echo $ocorrencia->getApf(); ?>
+                    <b>TC:</b> <?php echo $ocorrencia->getTc(); ?>
+                    <b>PAAI:</b> <?php echo $ocorrencia->getPaai(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th>Endereço:</th>
+                <td colspan="8">
+                    <b>Subarea:</b> <?php echo $ocorrencia->getEndereco()->getSubArea(); ?>
+                    <b>Setor:</b> <?php echo $ocorrencia->getEndereco()->getSetor(); ?>
+                    <b>Complemento:</b> <?php echo $ocorrencia->getEndereco()->getComplemento(); ?>
+                </td>
+            </tr>
+            <tr>
+                <th>Guarnição:</th>
+                <td colspan="8">Policial 01: Policial 01&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp
+                                Policial 02: Policial 01&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp
+                                Policial 03: Policial 01
+                </td>
+            </tr>
+            <tr>
+                <th>Envolvidos:</th>
+                <td colspan="8">Detidos: 10&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp
+                                Presos: 11&nbsp&nbsp&nbsp&nbsp-&nbsp&nbsp&nbsp&nbsp
+                                Apreendidos: 12
+                </td>
+            </tr>
+            <tr>
+                <th>Observações:</th>
+                <td colspan="8"><?php echo $ocorrencia->getObservacao(); ?></td>
+            </tr>
+            <tr>
+                <td colspan="9">
+                    <a href="<?php echo $this->url(array('controller' => 'ocorrencia', 'action' => 'detail', 'id_ocorrencia' => $ocorrencia->getId())) ?>">Detalhar</a>
+                    <a href="<?php echo $this->url(array('controller' => 'ocorrencia', 'action' => 'edit', 'id_ocorrencia' => $ocorrencia->getId())) ?>">Editar</a>
+                    <button class="btn">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+        <?php endforeach; ; ?>
+    </table>
